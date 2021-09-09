@@ -17,7 +17,7 @@ This will automatically route the requests to the containers and manage (create,
     docker network create nginx-proxy-network
     ```
 
-5- Create a folder for mounted volumes inside this folder
+5- Create a folder for mounted volumes inside this folder if not already exists
     ```
     mkdir my_volumes
     ```
