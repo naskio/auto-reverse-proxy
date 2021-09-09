@@ -1,0 +1,47 @@
+version: '3'
+
+services:
+
+  nginx-proxy:
+    restart: always
+    image: jwilder/nginx-proxy
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./my_volumes/conf:/etc/nginx/conf.d
+      - ./my_volumes/vhost:/etc/nginx/vhost.d
+      - ./my_volumes/html:/usr/share/nginx/html
+      - ./my_volumes/dhparam:/etc/nginx/dhparam
+      - ./my_volumes/certs:/etc/nginx/certs:ro
+      - /var/run/docker.sock:/tmp/docker.sock:ro
+
+  letsencrypt:
+    restart: always
+    image: jrcs/letsencrypt-nginx-proxy-companion
+    container_name: nginx-proxy-letsencrypt
+    depends_on:
+      - nginx-proxy
+    volumes:
+      - ./my_volumes/acme:/etc/acme.sh
+      - ./my_volumes/vhost:/etc/nginx/vhost.d
+      - ./my_volumes/html:/usr/share/nginx/html
+      - ./my_volumes/dhparam:/etc/nginx/dhparam:ro
+      - ./my_volumes/certs:/etc/nginx/certs
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - NGINX_PROXY_CONTAINER=nginx-proxy
+
+#volumes:
+#  conf:
+#  vhost:
+#  html:
+#  dhparam:
+#  certs:
+#  acme:
+
+networks:
+  default:
+    external:
+      name: nginx-proxy-network
