@@ -172,3 +172,7 @@ out/
 .history/
 *.code-workspace
 ### VS Code
+
+# Others
+*.tmp.*
+*.tmp
