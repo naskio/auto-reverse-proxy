@@ -1,0 +1,17 @@
+version: "3.9"
+services:
+  demo:
+    restart: always
+    image: "nginxdemos/hello:latest"
+    container_name: demo
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      #      VIRTUAL_PORT: ${VIRTUAL_PORT}
+      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_EMAIL: ${WEBMASTER_EMAIL}
+    networks:
+      - auto-reverse-proxy-global-network
+
+networks:
+  auto-reverse-proxy-global-network:
+    external: true

@@ -14,7 +14,7 @@ This will automatically route the requests to the containers and manage (create,
 
 4- Create a Docker network
     ```
-    docker network create nginx-proxy-network
+    docker network create auto-reverse-proxy-global-network
     ```
 
 5- Create a folder for mounted volumes inside this folder if not already exists
