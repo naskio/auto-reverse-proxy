@@ -16,13 +16,13 @@ services:
     #      - "8000:8000" # SSH tunnel for agents, not required because we are running portainer in standalone mode
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - portainer_data:/data
+      - data:/data
     networks:
       - auto-reverse-proxy-global-network
 
 
 volumes:
-  portainer_data:
+  data:
 
 networks:
   auto-reverse-proxy-global-network:
