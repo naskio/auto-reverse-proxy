@@ -10,11 +10,11 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - nginx-proxy_conf:/etc/nginx/conf.d
-      - nginx-proxy_vhost:/etc/nginx/vhost.d
-      - nginx-proxy_html:/usr/share/nginx/html
-      - nginx-proxy_dhparam:/etc/nginx/dhparam
-      - nginx-proxy_certs:/etc/nginx/certs:ro
+      - conf:/etc/nginx/conf.d
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - dhparam:/etc/nginx/dhparam
+      - certs:/etc/nginx/certs:ro
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       - auto-reverse-proxy-global-network
@@ -27,11 +27,11 @@ services:
     depends_on:
       - nginx-proxy
     volumes:
-      - nginx-proxy_acme:/etc/acme.sh
-      - nginx-proxy_vhost:/etc/nginx/vhost.d
-      - nginx-proxy_html:/usr/share/nginx/html
-      - nginx-proxy_dhparam:/etc/nginx/dhparam:ro
-      - nginx-proxy_certs:/etc/nginx/certs
+      - acme:/etc/acme.sh
+      - vhost:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
+      - dhparam:/etc/nginx/dhparam:ro
+      - certs:/etc/nginx/certs
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
@@ -39,12 +39,12 @@ services:
       - nginx-proxy-letsencrypt
 
 volumes:
-  nginx-proxy_conf:
-  nginx-proxy_acme:
-  nginx-proxy_vhost:
-  nginx-proxy_html:
-  nginx-proxy_dhparam:
-  nginx-proxy_certs:
+  conf:
+  acme:
+  vhost:
+  html:
+  dhparam:
+  certs:
 
 
 networks:
