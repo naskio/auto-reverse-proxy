@@ -1,0 +1,31 @@
+version: "3.9"
+services:
+  portainer:
+    restart: always
+    image: portainer/portainer-ce
+    command: -H unix:///var/run/docker.sock
+    container_name: portainer
+    environment:
+      VIRTUAL_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_HOST: ${VIRTUAL_HOST}
+      LETSENCRYPT_EMAIL: ${WEBMASTER_EMAIL}
+      VIRTUAL_PORT: "9000" # Portainer UI exposed from this port
+    expose: # only informative
+      - "9000"
+    #    ports:
+    #      - "8000:8000" # SSH tunnel for agents, not required because we are running portainer in standalone mode
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - portainer_data:/data
+    networks:
+      - auto-reverse-proxy-global-network
+
+
+volumes:
+  portainer_data:
+
+networks:
+  auto-reverse-proxy-global-network:
+    external: true
+
+

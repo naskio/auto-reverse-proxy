@@ -36,6 +36,20 @@ cd ./nginx-proxy
 docker-compose down
 ```
 
+6- Run portainer
+
+```
+cd  ./portainer
+docker-compose up -d
+```
+
+to stop portainer
+
+```
+cd  ./portainer
+docker-compose down
+```
+
 # Credit
 
 Based on [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)
