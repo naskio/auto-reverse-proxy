@@ -4,9 +4,11 @@ services:
     restart: always
     image: "nginxdemos/hello:latest"
     container_name: demo
+    expose:
+      - 80
     environment:
       VIRTUAL_HOST: ${VIRTUAL_HOST}
-      #      VIRTUAL_PORT: ${VIRTUAL_PORT}
+      VIRTUAL_PORT: 80
       LETSENCRYPT_HOST: ${VIRTUAL_HOST}
       LETSENCRYPT_EMAIL: ${WEBMASTER_EMAIL}
     networks:
