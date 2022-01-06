@@ -18,7 +18,7 @@ services:
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
       - auto-reverse-proxy-global-network
-      - nginx-proxy-letsencrypt
+      - letsencrypt-local-network
 
   nginx-proxy-letsencrypt:
     restart: always
@@ -36,7 +36,7 @@ services:
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
     networks:
-      - nginx-proxy-letsencrypt
+      - letsencrypt-local-network
 
 volumes:
   conf:
@@ -50,4 +50,4 @@ volumes:
 networks:
   auto-reverse-proxy-global-network:
     external: true
-  nginx-proxy-letsencrypt:
+  letsencrypt-local-network:
