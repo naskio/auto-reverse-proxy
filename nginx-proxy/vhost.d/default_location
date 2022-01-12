@@ -1,0 +1,3 @@
+# limit_req zone=basic_limit burst=5;
+# limit_req zone=basic_limit burst=5 nodelay;
+limit_req zone=basic_limit;

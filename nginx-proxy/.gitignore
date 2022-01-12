@@ -1,0 +1,5 @@
+conf.d/*
+vhost.d/*
+!conf.d/rate_limit.conf
+!vhost.d/default_location
+!vhost.d/app.example.com_location
