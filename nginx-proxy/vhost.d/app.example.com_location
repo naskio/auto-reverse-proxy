@@ -1,1 +1,1 @@
-limit_req zone=basic_limit burst=5 nodelay;
+limit_req zone=req_limit_per_ip burst=5 nodelay;
