@@ -53,6 +53,7 @@ volumes:
   html:
   dhparam:
   certs:
+  logs:
 
 
 networks:
