@@ -1,3 +1,3 @@
 # limit_req zone=req_limit_per_ip burst=5;
-# limit_req zone=req_limit_per_ip burst=5 nodelay;
+# limit_req zone=req_limit_per_ip burst=15 nodelay; # for loading static/media files
 limit_req zone=req_limit_per_ip;
