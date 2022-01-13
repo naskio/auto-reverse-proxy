@@ -143,6 +143,8 @@ $ { echo 'proxy_cache my-cache;'; echo 'proxy_cache_valid  200 302  60m;'; echo 
 $ ln -s /path/to/vhost.d/www.example.com /path/to/vhost.d/example.com
 ```
 
+You can also provide a default location: `/etc/nginx/vhost.d/default_location`
+
 # Credit
 
 Based on [nginx-proxy](https://github.com/nginx-proxy/nginx-proxy)
