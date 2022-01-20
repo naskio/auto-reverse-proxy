@@ -35,9 +35,9 @@ services:
     depends_on:
       - nginx-proxy
     volumes:
-      - acme:/etc/acme.sh
       - ./vhost.d:/etc/nginx/vhost.d
       #      - vhost:/etc/nginx/vhost.d
+      - acme:/etc/acme.sh
       - html:/usr/share/nginx/html
       - dhparam:/etc/nginx/dhparam:ro
       - certs:/etc/nginx/certs
@@ -50,9 +50,9 @@ services:
       - letsencrypt-local-network
 
 volumes:
-  conf:
+  #  conf:
+  #  vhost:
   acme:
-  vhost:
   html:
   dhparam:
   certs:
