@@ -4,7 +4,7 @@ services:
 
   nginx-proxy:
     restart: always
-    image: jwilder/nginx-proxy
+    image: nginxproxy/nginx-proxy
     container_name: nginx-proxy
     ports:
       - "80:80"
@@ -28,10 +28,10 @@ services:
       - auto-reverse-proxy-global-network
       - letsencrypt-local-network
 
-  nginx-proxy-letsencrypt:
+  acme-companion:
     restart: always
-    image: jrcs/letsencrypt-nginx-proxy-companion
-    container_name: nginx-proxy-letsencrypt
+    image: nginxproxy/acme-companion
+    container_name: acme-companion
     depends_on:
       - nginx-proxy
     volumes:
@@ -43,6 +43,7 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
+      - DEFAULT_EMAIL=${DEFAULT_EMAIL:-webmaster@localhost}
     networks:
       - letsencrypt-local-network
 
