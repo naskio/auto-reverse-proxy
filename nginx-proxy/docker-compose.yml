@@ -36,7 +36,8 @@ services:
       - nginx-proxy
     volumes:
       - acme:/etc/acme.sh
-      - vhost:/etc/nginx/vhost.d
+      - ./vhost.d:/etc/nginx/vhost.d
+      #      - vhost:/etc/nginx/vhost.d
       - html:/usr/share/nginx/html
       - dhparam:/etc/nginx/dhparam:ro
       - certs:/etc/nginx/certs
