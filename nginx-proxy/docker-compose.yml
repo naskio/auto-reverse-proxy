@@ -44,6 +44,7 @@ services:
     environment:
       - NGINX_PROXY_CONTAINER=nginx-proxy
       - DEFAULT_EMAIL=${DEFAULT_EMAIL:-webmaster@localhost}
+      - DEBUG=${DEBUG:-false}
     networks:
       - letsencrypt-local-network
 
