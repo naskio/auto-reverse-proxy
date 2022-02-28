@@ -1,8 +1,8 @@
-# Demo
+# Portainer
 
-Example of a containerized website.
+Portainer is a web-based management and monitoring tool for Docker containers.
 
-> default port: 80
+> default port: 9000
 
 -------------------------------------------------------------------------------
 

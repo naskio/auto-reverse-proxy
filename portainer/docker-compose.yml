@@ -20,12 +20,9 @@ services:
     networks:
       - auto-reverse-proxy-global-network
 
-
 volumes:
   data:
 
 networks:
   auto-reverse-proxy-global-network:
     external: true
-
-

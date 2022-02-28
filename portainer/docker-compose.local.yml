@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  portainer:
+    restart: always
+    image: portainer/portainer-ce
+    command: -H unix:///var/run/docker.sock
+    container_name: portainer
+    ports:
+      - "9000:9000" # UI
+      # - "8000:8000" # SSH tunnel for agents, not required because we are running portainer in standalone mode
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data:/data
+
+volumes:
+  data:
+
+networks:
+  default:
+    external: true
+    name: l_shared-network

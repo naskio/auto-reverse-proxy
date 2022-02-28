@@ -6,3 +6,8 @@ services:
     container_name: demo
     ports:
       - "${HOST_PORT:-80}:80"
+
+networks:
+  default:
+    external: true
+    name: l_shared-network
