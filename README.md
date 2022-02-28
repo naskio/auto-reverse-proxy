@@ -1,4 +1,4 @@
-# docker-nginx-auto-reverse-proxy
+# auto-reverse-proxy
 
 Deploy multiple containerized web apps in the same Server (VPS, ...) using Docker and NGINX as a reverse proxy. This
 will automatically route the requests to the containers and manage (create, generate and renew) the Let's encrypt SSL
@@ -64,7 +64,7 @@ See [Customize nginx reverse proxy](./CUSTOMIZE.md) for more details.
 ## Contribute
 
 Pull requests are welcome. For any bug report, please create an issue
-on [GitHub](https://github.com/naskio/docker-nginx-auto-reverse-proxy).
+on [GitHub](https://github.com/naskio/auto-reverse-proxy).
 
 ## Acknowledgements
 
