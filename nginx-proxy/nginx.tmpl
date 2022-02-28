@@ -121,6 +121,7 @@ proxy_set_header Proxy "";
 {{ if $.Env.RATE_LIMIT }}
 # rate limiting
 # limit_conn_zone $binary_remote_addr zone=conn_limit_per_ip:10m; # by connection
+# limit_req_zone $binary_remote_addr zone=req_limit_per_ip_hr:10m rate=100r/s; # by IP but higher rate
 limit_req_zone $binary_remote_addr zone=req_limit_per_ip:10m rate={{ $.Env.RATE_LIMIT }}; # rate=10r/s # by IP
 {{ end }}
 
